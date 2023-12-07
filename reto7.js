@@ -20,22 +20,23 @@ function drawGift(size, symbol) {
     const n = Math.abs(c * (s - 1) - r)
     return symbol.repeat(n - 1) + '#'
   }
-  let square = []
-  for (let i = 0; i < size * 2 - 1; i++) {
-    let str
-    if (i === 0 || i === size * 2 - 2) {
-      str = '#'.repeat(size)
-    } else if (i === size - 1) {
-      str = '#'.repeat(size) + sideSqr(size, i)
-    } else {
-      str = '#' + symbol.repeat(size - 2) + '#' + sideSqr(size, i)
+  let square = ''
+  const length = size * 2
+  for (let i = 0; i < length - 1; i++) {
+    let str = ''
+    if (i < size) {
+      str += ' '.repeat(size - 1 - i)
     }
-    square.push(str)
+    if (i === 0 || i === length - 2) {
+      str += '#'.repeat(size)
+    } else if (i === size - 1) {
+      str += '#'.repeat(size) + sideSqr(size, i)
+    } else {
+      str += '#' + symbol.repeat(size - 2) + '#' + sideSqr(size, i)
+    }
+    square += str + '\n'
   }
-  for (let i = 0; i < size; i++) {
-    square[i] = `${' '.repeat(size - 1 - i)}${square[i]}`
-  }
-  return square.join('\n') + '\n'
+  return square
 }
 
 console.log(drawGift(5, '+'))

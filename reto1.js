@@ -21,14 +21,31 @@ const firstRepeatedId3 = findFirstRepeated(giftIds3)
 console.log(firstRepeatedId3) // 5
 */
 
+// function findFirstRepeated(gifts) {
+//   let firstRepeated = -1
+//   for (let i = gifts.length - 1; i >= 0; i--) {
+//     for (let j = 0; j < i; j++) {
+//       if (gifts[i] === gifts[j]) {
+//         firstRepeated = gifts[j]
+//       }
+//     }
+//   }
+//   return firstRepeated
+// }
+
 function findFirstRepeated(gifts) {
   let firstRepeated = -1
-  for (let i = gifts.length - 1; i >= 0; i--) {
-    for (let j = 0; j < i; j++) {
-      if (gifts[i] === gifts[j]) {
-        firstRepeated = gifts[j]
-      }
+  const giftsSet = new Set()
+  for (const gift of gifts) {
+    if (giftsSet.has(gift)) {
+      firstRepeated = gift
+      break
     }
+    giftsSet.add(gift)
   }
   return firstRepeated
 }
+
+const giftIds = [2, 1, 3, 5, 3, 2]
+const firstRepeatedId = findFirstRepeated(giftIds)
+console.log(firstRepeatedId) // 3
