@@ -34,18 +34,15 @@ console.log(firstRepeatedId3) // 5
 // }
 
 function findFirstRepeated(gifts) {
-  let firstRepeated = -1
-  const giftsSet = new Set()
+  const giftsSet = []
   for (const gift of gifts) {
-    if (giftsSet.has(gift)) {
-      firstRepeated = gift
-      break
-    }
-    giftsSet.add(gift)
+    if (giftsSet.includes(gift)) return gift
+    giftsSet.push(gift)
   }
-  return firstRepeated
+  return -1
 }
 
 const giftIds = [2, 1, 3, 5, 3, 2]
+const start = Date.now()
 const firstRepeatedId = findFirstRepeated(giftIds)
-console.log(firstRepeatedId) // 3
+console.log(firstRepeatedId, Date.now() - start) // 3
