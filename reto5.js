@@ -14,22 +14,38 @@ Todas las barreras empiezan cerradas, pero después de 5 unidades de tiempo, se 
 
 */
 
+// function cyberReindeer(road, time) {
+//   let plainRoad = '.' + road.slice(1)
+//   const santa = 'S'
+//   const estadosTrineo = []
+//   for (let actualTime = 1, position = 0; actualTime <= time; actualTime++) {
+//     estadosTrineo.push(
+//       plainRoad.slice(0, position) + santa + plainRoad.slice(position + 1)
+//     )
+//     if (actualTime === 5) {
+//       plainRoad = plainRoad.replaceAll('|', '*')
+//     }
+//     if (plainRoad[position + 1] !== '|') {
+//       position++
+//     }
+//   }
+//   return estadosTrineo
+// }
+
 function cyberReindeer(road, time) {
-  let plainRoad = '.' + road.slice(1)
-  const santa = road.slice(0, 1)
+  let roadpath = '.' + road.slice(1)
   const estadosTrineo = []
   for (let actualTime = 1, position = 0; actualTime <= time; actualTime++) {
     estadosTrineo.push(
-      plainRoad.slice(0, position) + santa + plainRoad.slice(position + 1)
+      roadpath.slice(0, position) + 'S' + roadpath.slice(position + 1)
     )
     if (actualTime === 5) {
-      plainRoad = plainRoad.replaceAll('|', '*')
+      roadpath = roadpath.replaceAll('|', '*')
     }
-    if (plainRoad[position + 1] !== '|') {
+    if (roadpath[position + 1] !== '|') {
       position++
     }
   }
-
   return estadosTrineo
 }
 
