@@ -29,9 +29,11 @@ function getIndexsForPalindrome(word) {
   return null
 }
 
+const start = performance.now()
 console.log(getIndexsForPalindrome('anna'), '[]') //
 console.log(getIndexsForPalindrome('abab'), '[0, 1]') //
 console.log(getIndexsForPalindrome('abac'), 'null') //
 console.log(getIndexsForPalindrome('aaaaaaaa'), '[]') //
 console.log(getIndexsForPalindrome('aaababa'), '[1, 3]') //
 console.log(getIndexsForPalindrome('rotaratov'), '[4, 8]') //
+console.log(performance.now() - start)
